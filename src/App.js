@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import './index.css';
 
-function App() {
+import Card1 from "./components/Card1";
+import Card2 from "./components/Card2";
+import cardsArr from "./data";
+
+export default function App() {
+  console.log(cardsArr);
+  const cards = cardsArr.map((ele, index) => {
+    return (
+      <Card1
+        {...ele}
+        key={index}
+     />
+    );
+  })
+
+  console.log('this is cards:', cards);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Bootstrap Cards To Component Example</h1>
+      <section className="cards">
+    {cards}
+    {/* <Card1 title="Santorini" />
+    <Card2 /> */}
+</section>
     </div>
   );
 }
 
-export default App;
